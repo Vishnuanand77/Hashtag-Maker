@@ -16,12 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText input;
     TextView output;
     Button submit;
+
+    //To-do
+        // Splash Screen
+        // Disable Landscape
+        // Dynamically adjust UI elements
+        // Disable dark theme
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
