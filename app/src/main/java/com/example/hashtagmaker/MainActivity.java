@@ -3,6 +3,9 @@ package com.example.hashtagmaker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,9 +41,17 @@ public class MainActivity extends AppCompatActivity {
             output.setText(outputText);
             output.setTextColor(ContextCompat.getColor(this, R.color.blue));
 
-            
+            copyToClipBoard(outputText);
         });
 
+    }
+
+    private void copyToClipBoard(String outputText) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("hashtags", outputText);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(this, "Hashtags Copied", Toast.LENGTH_SHORT).show();
     }
 
     private String createHashtags() {
