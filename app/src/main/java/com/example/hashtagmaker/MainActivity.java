@@ -33,12 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         submit.setOnClickListener(view -> {
-            createHashtags();
+            String outputText = createHashtags();
+
+            output.setText(outputText);
+            output.setTextColor(ContextCompat.getColor(this, R.color.blue));
+
+            
         });
 
     }
 
-    private void createHashtags() {
+    private String createHashtags() {
         String value = input.getText().toString().trim();
         String[] splitText = value.split("\\s+");
         String outputTextView = "";
@@ -53,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         for(String s : outputList){
             outputTextView += s + " ";
         }
-        
-        output.setText(outputTextView);
-        output.setTextColor(ContextCompat.getColor(this, R.color.blue));
+
+        return outputTextView;
+
     }
 }
