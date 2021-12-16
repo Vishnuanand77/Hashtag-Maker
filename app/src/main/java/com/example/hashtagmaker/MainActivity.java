@@ -18,7 +18,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText input, output;
+    EditText input;
+    TextView output;
     Button submit;
 
     @Override
@@ -34,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
 //        String test = "Hello Test";
 //        String[] splitText = test.split("\\s+");
 
-
+        //Submit button on click listener
         submit.setOnClickListener(view -> {
-            String outputText = createHashtags();
+            String outputText = createHashtags(); //Function that takes text from edit text and splits it into hashtags
 
+            //Displaying the split text with prepended hashtags
             output.setText(outputText);
-            output.setTextColor(ContextCompat.getColor(this, R.color.blue));
+            output.setTextColor(ContextCompat.getColor(this, R.color.blue)); //UI Gimmick
 
+            //Copying the text to clip board
             copyToClipBoard(outputText);
         });
 
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ClipData clip = ClipData.newPlainText("hashtags", outputText);
         clipboard.setPrimaryClip(clip);
 
-        Toast.makeText(this, "Hashtags Copied", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Hashtags Copied to Clipboard", Toast.LENGTH_SHORT).show();
     }
 
     private String createHashtags() {
