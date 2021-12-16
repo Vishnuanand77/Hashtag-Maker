@@ -8,6 +8,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
         //Submit button on click listener
         submit.setOnClickListener(view -> {
-            String outputText = createHashtags(); //Function that takes text from edit text and splits it into hashtags
+            String value = input.getText().toString().trim();
+
+            //Checking if Edit Text field is empty
+            if(TextUtils.isEmpty(value)){
+                input.setError("Text Field is Empty");
+                Toast.makeText(this, "Text Field is Empty", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String outputText = createHashtags(value); //Function that takes text from edit text and splits it into hashtags
 
             //Displaying the split text with prepended hashtags
             output.setText(outputText);
@@ -57,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Hashtags Copied to Clipboard", Toast.LENGTH_SHORT).show();
     }
 
-    private String createHashtags() {
-        String value = input.getText().toString().trim();
+    private String createHashtags(String value) {
         String[] splitText = value.split("\\s+");
         String outputTextView = "";
 
