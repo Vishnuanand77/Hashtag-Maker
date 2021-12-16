@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button submit;
 
     //To-do
-        // Splash Screen
+        // Splash Screen -- Completed
         // Disable Landscape
         // Dynamically adjust UI elements
         // Disable dark theme

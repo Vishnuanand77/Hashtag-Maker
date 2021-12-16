@@ -11,9 +11,11 @@
         android:theme="@style/Theme.HashtagMaker">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="true" />
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="sensorPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
